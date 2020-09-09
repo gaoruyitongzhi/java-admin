@@ -52,7 +52,18 @@
 <!--      <el-form-item label="简介">-->
 <!--        <el-input v-model="book.info" :rows="10" type="textarea"/>-->
 <!--      </el-form-item>-->
-      <!-- TODO 书封 -->
+      <!-- 书封 -->
+      <el-form-item label="书封">
+        <el-upload
+          class="avatar-uploader"
+          :action="BASE_API+'/oss/uploadFile'"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload">
+          <img v-if="book.imageUrl" :src="book.imageUrl" class="avatar">
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
+      </el-form-item>
       <el-form-item>
         <el-button :disabled="saveBtnDisabled" type="primary" @click="saveBook()">保存</el-button>
       </el-form-item>
@@ -67,9 +78,11 @@
   export default {
     data() {
       return {
-        book: {},
+        book: {
+          imageUrl: ''
+        },
         saveBtnDisabled: false, // ##不禁用保存按钮
-        // BASE_API: process.env.VUE_APP_BASE_API
+        BASE_API: process.env.VUE_APP_BASE_API
       }
     },
     created() {
@@ -89,7 +102,48 @@
             // ## 添加完成之后 回到list页面,重定向功能
             this.$router.push('/cms/book/list')
           })
+      },
+      handleAvatarSuccess(res, file) { // 成功后执行的方法
+        this.book.imageUrl = res.data.url
+      },
+      beforeAvatarUpload(file) { // 上传前执行的方法
+        console.log('begin upload')
+        const isJPG = file.type === 'image/jpeg'
+        const isLt2M = file.size / 1024 / 1024 < 2
+
+        if (!isJPG) {
+          this.$message.error('上传头像图片只能是 JPG 格式!')
+        }
+        if (!isLt2M) {
+          this.$message.error('上传头像图片大小不能超过 2MB!')
+        }
+        return isJPG && isLt2M
       }
     }
   }
 </script>
+<style>
+  .avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+  }
+</style>
