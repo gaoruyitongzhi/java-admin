@@ -85,6 +85,28 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/cms/copyright',
+    component: Layout,
+    redirect: '/cms/copyright',
+    name: 'CmsCopyright',
+    meta: { title: '版权引进', icon: 'example' },
+    alwaysShow: true, // 如果当菜单只有一个的时候，也显示父级目录
+    children: [
+      {
+        path: 'list',
+        name: 'CopyrightOwners',
+        component: () => import('@/views/cms/copyright/copyrightlist'),
+        meta: { title: '版权方管理', icon: 'table' }
+      },
+      {
+        path: 'tree',
+        name: 'Tree',
+        component: () => import('@/views/tree/index'),
+        meta: { title: 'Tree', icon: 'tree' }
+      }
+    ]
+  },
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
