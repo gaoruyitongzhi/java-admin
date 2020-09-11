@@ -85,19 +85,19 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/copyright/customer',
+    path: '/copyright',
     component: Layout,
-    redirect: '/copyright/customer',
+    redirect: '/copyright',
     name: 'Example',
     meta: { title: '版权引进', icon: 'example' },
     alwaysShow: true,// 显示如果当子菜单只有一个的时候，也显示父菜单
     children: [
-      // {
-      //   path: 'table',
-      //   name: 'Table',
-      //   component: () => import('@/views/table/index'),
-      //   meta: { title: '版权方管理', icon: 'table' }
-      // },
+      {
+        path: 'cms/copyright/copyrightlist',
+        name: 'copyrightlist',
+        component: () => import('@/views/cms/copyright/copyrightlist'),
+        meta: { title: '版权方管理', icon: 'table' }
+      },
       // {
       //   path: 'tree',
       //   name: 'Tree',
@@ -118,21 +118,21 @@ export const constantRoutes = [
       //   meta: { title: '接口管理', icon: 'tree' }
       // },
       {
-        path: 'list',
+        path: 'customer/list',
         name: 'CustomerList',
         component: () => import('@/views/copyright/customer/list'),
         meta: { title: '客户管理', icon: 'table' }
       }
       ,
       {
-        path: 'insert',
+        path: 'customer/insert',
         name: 'CustomerInsert',
         component: () => import('@/views/copyright/customer/insert'),
         meta: { title: '客户添加', icon: 'form'},
         // hidden: true//隐藏
       },
       {
-        path: 'update/:id', // ## :id 相当于占位符,要传参数
+        path: 'customer/update/:id', // ## :id 相当于占位符,要传参数
         name: 'CustomerUpdate',
         component: () => import('@/views/copyright/customer/update'),
         meta: { title: '客户修改', noCache: true},

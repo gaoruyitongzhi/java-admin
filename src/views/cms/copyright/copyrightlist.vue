@@ -71,7 +71,7 @@
         <template slot-scope="scope">
           <el-button type="danger" size="mini" @click="deleteCopyright(scope.row.id, scope.row.cooperationStatus)">删除<i class="el-icon-delete el-icon--right"></i></el-button>
           <el-button type="primary" size="mini" @click="getCopyrightById(scope.row.id)">修改<i class="el-icon-edit el-icon--right"></i></el-button>
-          <router-link :to="'/copyright/customer/list/'+scope.row.id">
+          <router-link :to="'/copyright/customer/list/'">
             <el-button type="danger" size="mini">管理客户<i class="el-icon-share el-icon--right"></i></el-button>
           </router-link>
         </template>
