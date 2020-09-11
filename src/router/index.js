@@ -85,45 +85,58 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/cms/copyright',
+    path: '/copyright/customer',
     component: Layout,
-    redirect: '/cms/copyright',
-    name: 'CmsCopyright',
+    redirect: '/copyright/customer',
+    name: 'Example',
     meta: { title: '版权引进', icon: 'example' },
-    alwaysShow: true, // 如果当菜单只有一个的时候，也显示父级目录
+    alwaysShow: true,// 显示如果当子菜单只有一个的时候，也显示父菜单
     children: [
+      // {
+      //   path: 'table',
+      //   name: 'Table',
+      //   component: () => import('@/views/table/index'),
+      //   meta: { title: '版权方管理', icon: 'table' }
+      // },
+      // {
+      //   path: 'tree',
+      //   name: 'Tree',
+      //   component: () => import('@/views/tree/index'),
+      //   meta: { title: '批次管理', icon: 'tree' }
+      // }
+      // ,
+      // {
+      //   path: 'tree',
+      //   name: 'Tree',
+      //   component: () => import('@/views/tree/index'),
+      //   meta: { title: '书单管理', icon: 'tree' }
+      // },
+      // {
+      //   path: 'tree',
+      //   name: 'Tree',
+      //   component: () => import('@/views/tree/index'),
+      //   meta: { title: '接口管理', icon: 'tree' }
+      // },
       {
         path: 'list',
-        name: 'CopyrightOwners',
-        component: () => import('@/views/cms/copyright/copyrightlist'),
-        meta: { title: '版权方管理', icon: 'table' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        name: 'CustomerList',
+        component: () => import('@/views/copyright/customer/list'),
+        meta: { title: '客户管理', icon: 'table' }
       }
-    ]
-  },
-  {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
-    children: [
+      ,
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'insert',
+        name: 'CustomerInsert',
+        component: () => import('@/views/copyright/customer/insert'),
+        meta: { title: '客户添加', icon: 'form'},
+        // hidden: true//隐藏
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'update/:id', // ## :id 相当于占位符,要传参数
+        name: 'CustomerUpdate',
+        component: () => import('@/views/copyright/customer/update'),
+        meta: { title: '客户修改', noCache: true},
+        // hidden: true//隐藏
       }
     ]
   },

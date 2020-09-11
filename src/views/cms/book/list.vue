@@ -77,10 +77,12 @@
           <router-link :to="'/cms/book/update/'+scope.row.id">
             <el-button type="primary" size="mini">修改</el-button>
           </router-link>
+
           <el-button v-if="scope.row.status === 0" type="danger" size="mini" icon="el-icon-delete"
                      @click="upOrDownBook(scope.row.id, 1)">上架书籍
           </el-button>
           <el-button v-else type="danger" size="mini" @click="upOrDownBook(scope.row.id, 0)">下架书籍</el-button>
+
         </template>
       </el-table-column>
     </el-table>
