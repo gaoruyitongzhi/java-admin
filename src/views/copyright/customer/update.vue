@@ -65,7 +65,7 @@
         <el-input v-model="customer.iremarks" :rows="10" type="textarea"/>
       </el-form-item>
       <el-form-item>
-        <el-button :disabled="saveBtnDisabled" type="primary" @click="saveCustomer()">添加</el-button>
+        <el-button :disabled="saveBtnDisabled" type="primary" @click="saveCustomer()">修改</el-button>
         <router-link :to="'/copyright/customer/list'">
           <el-button type="primary">返回</el-button>
         </router-link>
