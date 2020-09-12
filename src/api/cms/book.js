@@ -30,7 +30,7 @@ export default {
     console.log(book)
     return request ({
       url:`${api_name}/updateBook`,
-      method:'post',
+      method:'put',
       data:book
     })
   },
