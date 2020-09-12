@@ -121,7 +121,8 @@ export const constantRoutes = [
         path: 'customer/list',
         name: 'CustomerList',
         component: () => import('@/views/copyright/customer/list'),
-        meta: { title: '客户管理', icon: 'table' }
+        meta: { title: '客户管理', icon: 'table' },
+        hidden: true//隐藏
       }
       ,
       {
@@ -129,14 +130,14 @@ export const constantRoutes = [
         name: 'CustomerInsert',
         component: () => import('@/views/copyright/customer/insert'),
         meta: { title: '客户添加', icon: 'form'},
-        // hidden: true//隐藏
+        hidden: true//隐藏
       },
       {
         path: 'customer/update/:id', // ## :id 相当于占位符,要传参数
         name: 'CustomerUpdate',
         component: () => import('@/views/copyright/customer/update'),
         meta: { title: '客户修改', noCache: true},
-        // hidden: true//隐藏
+        hidden: true//隐藏
       }
     ]
   },
